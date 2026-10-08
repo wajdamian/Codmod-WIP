@@ -34,6 +34,9 @@ public Action:OdrodzenieGracza(Handle:event, String:name[], bool:dontbroadcast)
 {
 	new client = GetClientOfUserId(GetEventInt(event, "userid"));
 	if (ma_item[client])
-		SetEntProp(client, Prop_Send, "m_iAccount", 16000);
+	{
+		new clientMoney = GetEntProp ( client, Prop_Send, "m_iAccount" );
+		SetEntProp(client, Prop_Send, "m_iAccount",  ((16000 + clientMoney) > 65000)? 65000 : 16000 + clientMoney);
+	}
 	return Plugin_Continue;
 }

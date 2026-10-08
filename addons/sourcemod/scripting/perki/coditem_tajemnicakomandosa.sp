@@ -24,15 +24,15 @@ public OnPluginStart()
 public cod_item_enabled(client)
 {
 	ma_item[client] = true;
+	cod_set_user_bonus_health(client,  - 49 - cod_get_user_health(client, 1, 0, 0) - cod_get_user_health(client, 0, 0, 1));
+	cod_set_user_bonus_trim(client, cod_get_user_trim(client, 0, 1, 0)+60);
 	SetEntData(client, FindDataMapInfo(client, "m_iHealth"), 2);
-	cod_set_user_bonus_health(client, cod_get_user_health(client, 0, 1, 0)-200);
-	cod_set_user_bonus_trim(client, cod_get_user_trim(client, 0, 1, 0)-60);
 }
 
 public cod_item_disabled(client)
 {
 	ma_item[client] = false;
-	cod_set_user_bonus_health(client, cod_get_user_health(client, 0, 1, 0)+200);
+	cod_set_user_bonus_health(client,  0);
 	cod_set_user_bonus_trim(client, cod_get_user_trim(client, 0, 1, 0)-60);
 }
 
@@ -93,6 +93,7 @@ public Action:OdrodzenieGracza(Handle:event, String:name[], bool:dontbroadcast)
 	if (!IsValidClient(client) || !ma_item[client])
 		return Plugin_Continue;
 	
+	cod_set_user_bonus_health(client,  - 49 - cod_get_user_health(client, 1, 0, 0) - cod_get_user_health(client, 0, 0, 1));
 	SetEntData(client, FindDataMapInfo(client, "m_iHealth"), 2);
 	return Plugin_Continue;
 }

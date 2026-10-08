@@ -63,7 +63,7 @@ native cod_get_item_desc(item, const String:nazwa[], const MaxLeng);
 native cod_inflict_damage(client, attacker, damage);
 native cod_register_class(const String:nazwa[], const String:opis[], const String:bronie[], inteligencja, zdrowie, obrazenia, wytrzymalosc, kondycja, flagi);
 native cod_register_item(const String:nazwa[], const String:opis[], min_wartosc, max_wartosc);
-native cod_perform_blind(int client, int msecs, int red, int greeg, int blue, int alpha)
+native cod_perform_blind(int client, int msecs, int red, int green, int blue, int alpha)
 
 forward cod_class_enabled(client, klasa);
 forward cod_class_disabled(client, klasa);

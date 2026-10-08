@@ -94,7 +94,7 @@ public bool:TraceRayDontHitPlayerAndWorld(entityhit, mask) {
 public Action:OdrodzenieGracza(Handle:event, String:name[], bool:dontbroadcast)
 {
 	new client = GetClientOfUserId(GetEventInt(event, "userid"));
-	if (!IsValidClient(client) || ma_item[client])
+	if (!IsValidClient(client) || !ma_item[client])
 		return Plugin_Continue;
 	
 	canUse[client] = true;
